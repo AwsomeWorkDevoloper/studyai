@@ -1,0 +1,33 @@
+{
+  "name": "studyai",
+  "version": "1.0.0",
+  "description": "Never worry about an upcoming test when you have your personal AI study buddy",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AwsomeWorkDevoloper/studyai.git"
+  },
+  "keywords": [
+    "ai",
+    "study",
+    "helper",
+    "tools"
+  ],
+  "author": "Squiggly Hairline",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AwsomeWorkDevoloper/studyai/issues"
+  },
+  "homepage": "https://github.com/AwsomeWorkDevoloper/studyai#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "openai": "^3.1.0"
+  }
+}
