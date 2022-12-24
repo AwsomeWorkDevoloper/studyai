@@ -4,14 +4,206 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>StudyAI - Your personal study buddy</title>
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+
+    <script src="js/index.js" defer></script>
+    <script src="js/components/navbar.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Main Petite vue-->
     <script type="module">
         import { createApp } from 'https://unpkg.com/petite-vue?module'
-        createApp().mount();
+
+        createApp({
+            Navbar
+        }).mount();
+
+        console.log("Hello");
     </script>
-    <link rel="stylesheet" href="style.css">
+ 
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
+<!-- Templates -->
+<!-- Navbar -->
+<template id="navbar-template">
+    <div class="w-100 row">
+        <div class="col-3">
+            <div class="row">
+                <div class="col text-left">
+                    <img src="assets/study_ai_white.png" width="36" height="36" alt="Logo"/>
+                </div>
+                <div class="col">
+                    <h3>StudyAI</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col">
+                            <a href='/' class="link">Home</a>
+                        </div>
+                        <div class="col">
+                            <a href='#examples' class="link">Examples</a>
+                        </div>
+                        <div class="col">
+                            <a href='#pricing' class="link">Pricing</a>
+                        </div>
+                        <div class="col">
+                            <a class="link link-highlighted">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- Body -->
 <body>
-    <h1>Hello, World!</h1>
+    <!-- Home Top -->
+    <div class="homepage-section-1">
+        <div class="navbar" v-scope="Navbar({ })"></div> 
+        <div class="row w-75 h-75 m-auto d-flex align-items-center">
+            <div class="col-7 pl-4">
+                <div class="row">
+                    <h1>Study smarter now. </h1>
+                </div>
+                <div class="row">
+                    <h6 class="font-weight-light">your personal ai study buddy. </h6>
+                </div>
+                <div class="row mt-5">
+                    <div class="d-button primary-btn">Learn more!</div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <img src="assets/Student-reading-a-book.svg" class="mt-4" width="800px"/>
+            </div>
+        </div>
+    </div>
+    <!-- Cards -->
+    <div class="homepage-section-cards">
+        <div class="col w-75 h-100 m-auto mt-5">
+            <div class="row" style="margin-top: 7em;">
+                <div class="col p-3 ">
+                    <div class="showcard">
+                        <div class="row-2">
+                            <h6 class="font-weight-light">
+                                Never rush to think hard with AI
+                            </h6>
+                        </div>
+                        <div class="row-2">
+                            <h4>
+                                Essay Outline
+                            </h4>
+                        </div>
+                        <div class="row-8">
+                            <img src="assets/Writer8217s-block.svg" class="mt-4" width="256px"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col p-3 ">
+                    <div class="showcard">
+                        <div class="row-2">
+                            <h6 class="font-weight-light">
+                                Easily prepare for any task with
+                            </h6>
+                        </div>
+                        <div class="row-2">
+                            <h4>
+                                AI Study Notes
+                            </h4>
+                        </div>
+                        <div class="row-8">
+                            <img src="assets/Classes.svg" class="mt-4" width="256px"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col p-3 ">
+                    <div class="showcard">
+                        <div class="row-2">
+                            <h6 class="font-weight-light">
+                                Make sure you’re ready with
+                            </h6>
+                        </div>
+                        <div class="row-2">
+                            <h4>
+                                AI Generated Quizzes
+                            </h4>
+                        </div>
+                        <div class="row-8">
+                            <img src="assets/Pomodoro-technique.svg" class="mt-4" width="256px"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col p-3 ">
+                    <div class="showcard">
+                        <div class="row-2">
+                            <h6 class="font-weight-light">
+                                Get rid of that red squiggly with the 
+                            </h6>
+                        </div>
+                        <div class="row-2">
+                            <h4>
+                                Grammar checker
+                            </h4>
+                        </div>
+                        <div class="row-8">
+                            <img src="assets/Writer8217s-block.svg" class="mt-4" width="256px"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col p-3 ">
+                    <div class="showcard">
+                        <div class="row-2">
+                            <h6 class="font-weight-light">
+                                Understand any language with 
+                            </h6>
+                        </div>
+                        <div class="row-2">
+                            <h4>
+                                AI Translator
+                            </h4>
+                        </div>
+                        <div class="row-8">
+                            <img src="assets/Classes.svg" class="mt-4" width="256px"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col p-3 ">
+                    <div class="showcard">
+                        <div class="row-2">
+                            <h6 class="font-weight-light">
+                                Write nicer and smarter with the
+                            </h6>
+                        </div>
+                        <div class="row-2">
+                            <h4>
+                                Analogy maker
+                            </h4>
+                        </div>
+                        <div class="row-8">
+                            <img src="assets/Pomodoro-technique.svg" class="mt-4" width="256px"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
