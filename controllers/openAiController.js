@@ -14,7 +14,7 @@ const testOpenAI = async (req, res) => {
         // Create prediction
         const response = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: "What are 5 key points I should when studying Nicola Tesla?",
+            prompt: 'What does the name of the 55th surah \'الرحمن\' in the Quran mean in English?',
             temperature: 0.3,
             max_tokens: 200,
             top_p: 1.0,
