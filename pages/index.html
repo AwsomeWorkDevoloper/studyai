@@ -11,6 +11,7 @@
     <script src="js/index.js"></script>
     <script src="js/components/navbar.js"></script>
     <script src="js/components/footer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="style.css">
 
     <!-- Main Petite vue-->
@@ -71,7 +72,7 @@
                 <div class="col-6">
                     <div class="row">
                         <div class="col">
-                            <a href='/' class="link">Home</a>
+                            <a href='/dashboard' class="link">Dashboard</a>
                         </div>
                         <div class="col">
                             <a href='#examples' class="link">Examples</a>
@@ -80,7 +81,7 @@
                             <a href='#pricing' class="link">Pricing</a>
                         </div>
                         <div class="col">
-                            <a class="link link-highlighted">Get Started</a>
+                            <a href='/signup' class="link link-highlighted">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -180,7 +181,7 @@
                     <h6 class="font-weight-light">your personal ai study buddy. </h6>
                 </div>
                 <div class="row mt-5">
-                    <div class="d-button primary-btn">Learn more!</div>
+                    <div onclick="location.href='/#examples'" class="d-button primary-btn">Learn more!</div>
                 </div>
             </div>
 

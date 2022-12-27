@@ -86,8 +86,60 @@ body, html {
     }
 }
 
+.user-management-page-lsup {
+    background: radial-gradient(circle, rgba(241,31,100,0.83) 0%, rgba(216,30,91,1) 100%);
+    width: 100vw;
+    min-height: 75vh;
+    padding: 2em;
+
+    form {
+        box-shadow: 20px 20px 50px 0px rgba(0,0,0,0.3);
+
+        text-align: center;
+        border-radius: 10px;
+        background: $white;
+        padding: 2em;
+        width: 50%;
+        margin: 2em;
+
+        * { color: $primary; }
+
+        .input-prompt {
+            text-align: left;
+            background: $white;
+            border-radius: 10px;
+            box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25);
+            padding: 1em;
+            margin: 0.5em;
+
+            * {
+                color: $black;
+            }
+
+            input {
+                border:transparent;
+                background:transparent;
+
+                font-weight: bold;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &::placeholder {
+                    font-style: italic;
+                    font-weight: lighter;
+                }
+                
+                width: 100%;
+            }
+        }
+    }
+}
+
 footer {
     background: radial-gradient(circle, rgba(241,31,100,0.83) 0%, rgba(216,30,91,1) 100%);
+    box-shadow: 20px 20px 50px 0px rgba(0,0,0,0.3);
     height: 35vh;
     padding: 2em;
 }
@@ -111,6 +163,20 @@ footer {
         text-decoration: none;
     }
 }
+
+.link-secondary {
+    color: $primary!important;
+    text-decoration: none;
+    transition: 0.75s;
+
+    &:hover {    
+        color: $white!important;
+        cursor: pointer;
+        transition: 0.75s;
+        text-decoration: none;
+    }
+}
+
 
 .link-highlighted {
     border-bottom: 1px solid $white;
@@ -150,7 +216,7 @@ footer {
 
 .secondary-btn {
     border-radius: 10px;
-    background: transparent;
+    background: $white;
     color: $primary;
     text-align: center;
     padding: 0.5em;

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyAI - Your personal study buddy</title>
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="js/login.js"></script>
+    <script src="js/components/navbar.js"></script>
+    <script src="js/components/footer.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Main Petite vue-->
+    <script type="module">
+        import { createApp, reactive } from 'https://unpkg.com/petite-vue?module'
+
+        createApp({
+            Navbar,
+            Footer,
+        }).mount();
+    </script>
+ 
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<!-- Templates -->
+<!-- Navbar -->
+<template id="navbar-template">
+    <div class="w-100 row">
+        <div class="col-3">
+            <a href="/" class="link">
+                <div class="row">
+                    <div class="col-2 text-left">
+                        <img src="assets/study_ai_white.png" width="36" height="36" alt="Logo"/>
+                    </div>
+                    <div class="col">
+                        <h3>StudyAI</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col">
+                            <a href='/dashboard' class="link">Dashboard</a>
+                        </div>
+                        <div class="col">
+                            <a href='#examples' class="link">Examples</a>
+                        </div>
+                        <div class="col">
+                            <a href='#pricing' class="link">Pricing</a>
+                        </div>
+                        <div class="col">
+                            <a href="/signup" class="link link-highlighted">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- Footer -->
+<template id="footer-template">
+    <footer>
+        <div class="row w-75 m-auto">
+            <div class="col-7">
+                <div class="row">
+                    <div class="col-6">
+                        <a href="/" class="link">
+                            <div class="row">
+                                <div class="col-2 text-left">
+                                    <img src="assets/study_ai_white.png" width="36" height="36" alt="Logo"/>
+                                </div>
+                                <div class="col">
+                                    <h3>StudyAI</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row-4 h-100 d-flex align-items-center mt-3">
+                    <div>
+                        <div class="pl-3 mt-3">
+                            <h5>Get in touch</h5>
+                        </div>
+                        <div class="w-50 d-flex align-items-center mt-3">
+                            <div class="col">
+                                <a href="https://www.instagram.com/studyai_ig/" class="link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="https://www.facebook.com/studyai.fa/" class="link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="https://twitter.com/StudyAI_tw" class="link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="mailto:contact.studyai@gmail.com" class="link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-5">
+                <div class="row">
+                    <div class="col">
+                        <h6>Overview</h6>
+                    </div>
+                    <div class="col">
+                        <h6>About</h6>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <div class="row"><a href="/" class="link font-weight-light p-2 ml-2">Home</a></div>
+                        <div class="row"><a href="/#examples" class="link font-weight-light p-2 ml-2">Examples</a></div>
+                        <div class="row"><a href="/#pricing" class="link font-weight-light p-2 ml-2">Pricing</a></div>
+                        <div class="row"><a href="/signup" class="link font-weight-light p-2 ml-2">Signup</a></div>
+                        <div class="row"><a href="/login" class="link font-weight-light p-2 ml-2">Login</a></div>
+                    </div>
+                    <div class="col">
+                        <div class="row"><a href="#" class="link font-weight-light p-2 ml-2">Terms and Conditons</a></div>
+                        <div class="row"><a href="#" class="link font-weight-light p-2 ml-2">Privacy Policy</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</template>
+
+<!-- Body -->
+<body>
+    <!-- Home Top -->
+    <div class="user-management-page-lsup">
+        <div class="navbar mb-3" v-scope="Navbar({ })"></div> 
+        <div class="row w-75 h-100 m-auto d-flex align-items-center justify-content-center">
+            <form>
+                <h3 class="p-4">Welcome Back!</h3>
+
+                <div class="input-prompt">
+                    <p >Username or Email</p>
+                    <input type="text" placeholder="Example: JohnDoe or johndoe@example.com..." name="username" />
+                </div>
+                <div class="input-prompt">
+                    <p >Password</p>
+                    <input type="password" placeholder="Example: *******" name="pwd" />
+                </div>
+                <div onclick="proceed(event)" class="d-button secondary-btn" style="margin: 0.5em; margin-top:.75em; margin-bottom: .75em;">Login</div>
+
+                <a href='/signup' class="link-secondary">Dont have an account? Sign up here!</a>
+            </form>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div v-scope="Footer({ })"></div> 
+</body>
+</html>
