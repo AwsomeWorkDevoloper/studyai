@@ -62,6 +62,6 @@ const proceed = async (event) => {
           clearInterval(timerInterval)
         }
       }).then((result) => {
-        location.href = '/';
+        location.href = '/dashboard';
       })
 };

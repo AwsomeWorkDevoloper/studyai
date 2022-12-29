@@ -35,5 +35,14 @@ router.post('/auth', async (req, res) => {
     res.json({ success: true, username: authResult.username });
 });
 
+// Logout
+router.get('/logout', async (req, res) => {
+    console.log("Logging out");
+
+    req.session.destroy();
+
+    res.redirect('/');
+});
+
 // Export
 module.exports = router;

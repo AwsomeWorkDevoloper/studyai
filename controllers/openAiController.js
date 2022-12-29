@@ -9,12 +9,30 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 // test open ai
-const testOpenAI = async (req, res) => {
+const askOpenAI = async (req, res) => {
+    let list = req.body;
+
+    console.log(list);
+
+    let prompt = list[0];
+
+    list.shift();
+
+    let text = `
+        I previously entered in the following things, please use them as context for the next question:
+
+        ${list.map(x => `"${x.prompt}"\n`)}
+
+        So anyway, ${prompt.prompt}
+    `
+
+    if (list.length == 0) text = prompt.prompt;
+
     try {
         // Create prediction
         const response = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: 'What does the name of the 55th surah \'الرحمن\' in the Quran mean in English?',
+            prompt: text,
             temperature: 0.3,
             max_tokens: 200,
             top_p: 1.0,
@@ -48,4 +66,4 @@ const testOpenAI = async (req, res) => {
 }
 
 // Exports
-module.exports = { testOpenAI };
+module.exports = { askOpenAI };

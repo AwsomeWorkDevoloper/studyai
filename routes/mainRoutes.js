@@ -1,6 +1,7 @@
 // Imports
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 
 // Get router
 const router = express.Router();
@@ -16,21 +17,39 @@ function checkSignIn(req, res, next){
     }
  }
 
+// Render
+function renderPage(req, res, page, components) {
+    const p = path.join(__dirname, '/../pages/'+page);
+
+    let fileContents = fs.readFileSync(p).toString();
+
+    let templateComponents = "";
+
+    components.forEach(component => {
+        let cFile = path.join(__dirname, "/../components/" + component + ".html");
+        let componentContent = fs.readFileSync(cFile).toString();
+
+        templateComponents += componentContent + "\n";
+    });
+
+    res.send(fileContents.replace('<!-- Templates -->', templateComponents));
+}
+
 // Home page
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/../pages/index.html'));
+    renderPage(req, res, "index.html", ["navbar", "footer"]);
 });
 
 router.get('/signup', (req, res) => {
-    res.sendFile(path.join(__dirname, '/../pages/signup.html'));
+    renderPage(req, res, "signup.html", ["navbar", "footer"]);
 });
 
 router.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, '/../pages/login.html'));
+    renderPage(req, res, "login.html", ["navbar", "footer"]);
 });
 
 router.get('/dashboard', checkSignIn, (req, res) => {
-    res.sendFile(path.join(__dirname, '/../pages/dashboard.html'));
+    renderPage(req, res, "dashboard.html", ["footer"]);
 })
 
 // Export

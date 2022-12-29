@@ -3,7 +3,7 @@ function GetExamples() {
         'Essay Outline',
         'Study Notes',
         'Quizzes',
-        'Grammar Checker',
+        'Grammar',
         'Translator',
         'Analogy'
     ];

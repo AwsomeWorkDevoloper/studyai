@@ -1,12 +1,12 @@
 // Imports
 const express = require('express');
-const { testOpenAI } = require('../controllers/openAiController');
+const { askOpenAI } = require('../controllers/openAiController');
 
 // Get router
 const router = express.Router();
 
 // Post: Generate image
-router.post('/test', testOpenAI);
+router.post('/ask', askOpenAI);
 
 // Export
 module.exports = router;

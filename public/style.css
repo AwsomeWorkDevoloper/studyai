@@ -102,7 +102,11 @@ body, html {
   color: #DE2562;
 }
 
-.user-management-page-lsup form .input-prompt {
+.user-management-page-lsup form * .input-prompt {
+  color: #28262C;
+}
+
+.input-prompt {
   text-align: left;
   background: #F9F5FF;
   border-radius: 10px;
@@ -110,41 +114,62 @@ body, html {
           box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
   padding: 1em;
   margin: 0.5em;
+  /* width */
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
 }
 
-.user-management-page-lsup form .input-prompt * {
+.input-prompt * {
   color: #28262C;
 }
 
-.user-management-page-lsup form .input-prompt input {
+.input-prompt input {
   border: transparent;
   background: transparent;
   font-weight: bold;
   width: 100%;
 }
 
-.user-management-page-lsup form .input-prompt input:focus {
+.input-prompt input:focus {
   outline: none;
 }
 
-.user-management-page-lsup form .input-prompt input::-webkit-input-placeholder {
+.input-prompt input::-webkit-input-placeholder {
   font-style: italic;
   font-weight: lighter;
 }
 
-.user-management-page-lsup form .input-prompt input:-ms-input-placeholder {
+.input-prompt input:-ms-input-placeholder {
   font-style: italic;
   font-weight: lighter;
 }
 
-.user-management-page-lsup form .input-prompt input::-ms-input-placeholder {
+.input-prompt input::-ms-input-placeholder {
   font-style: italic;
   font-weight: lighter;
 }
 
-.user-management-page-lsup form .input-prompt input::placeholder {
+.input-prompt input::placeholder {
   font-style: italic;
   font-weight: lighter;
+}
+
+.input-prompt::-webkit-scrollbar {
+  width: 10px;
+}
+
+.input-prompt::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.input-prompt::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 1em;
+}
+
+.input-prompt::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 footer {
@@ -271,5 +296,64 @@ footer {
           box-shadow: 20px 20px 50px 0px rgba(0, 0, 0, 0.3);
   padding: 2em;
   text-align: center;
+}
+
+main {
+  width: 100vw;
+  min-height: 90vh;
+  background: radial-gradient(circle, rgba(241, 31, 100, 0.83) 0%, #d81e5b 100%);
+}
+
+main .sidebar {
+  background: #F9F5FF;
+  border-top-right-radius: 1em;
+  padding: 2em;
+}
+
+main .sidebar .option-btn {
+  border-radius: 10px;
+  background: #F9F5FF;
+  color: #DE2562;
+  text-align: center;
+  padding: 0.5em;
+  margin: .75em .75em .75em 0;
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  border: solid 2px #DE2562;
+}
+
+main .sidebar .option-btn-selected {
+  border: solid 2px transparent;
+  background: #DE2562;
+  color: #F9F5FF;
+}
+
+main .sidebar * {
+  color: #DE2562;
+}
+
+main .prompt-section {
+  padding: 4em;
+}
+
+main .context-section {
+  padding: 4em;
+}
+
+main .checkbox {
+  border-radius: 10px;
+  background: #28262C;
+  width: 25px;
+  height: 25px;
+  -webkit-transition: 0.75s;
+  transition: 0.75s;
+}
+
+main .checkbox:hover {
+  cursor: pointer;
+}
+
+main .checkbox-selected {
+  background: #DE2562;
 }
 /*# sourceMappingURL=style.css.map */

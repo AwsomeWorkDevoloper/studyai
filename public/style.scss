@@ -102,38 +102,60 @@ body, html {
         width: 50%;
         margin: 2em;
 
-        * { color: $primary; }
+        * { color: $primary;  .input-prompt { color: $black; } }
 
-        .input-prompt {
-            text-align: left;
-            background: $white;
-            border-radius: 10px;
-            box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25);
-            padding: 1em;
-            margin: 0.5em;
+    }
+}
 
-            * {
-                color: $black;
-            }
+.input-prompt {
+    text-align: left;
+    background: $white;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25);
+    padding: 1em;
+    margin: 0.5em;
 
-            input {
-                border:transparent;
-                background:transparent;
+    * {
+        color: $black;
+    }
 
-                font-weight: bold;
+    input {
+        border:transparent;
+        background:transparent;
 
-                &:focus {
-                    outline: none;
-                }
+        font-weight: bold;
 
-                &::placeholder {
-                    font-style: italic;
-                    font-weight: lighter;
-                }
-                
-                width: 100%;
-            }
+        &:focus {
+            outline: none;
         }
+
+        &::placeholder {
+            font-style: italic;
+            font-weight: lighter;
+        }
+        
+        width: 100%;
+    }
+
+    /* width */
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 1em;
+    }
+    
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 }
 
@@ -252,4 +274,61 @@ footer {
     box-shadow: 20px 20px 50px 0px rgba(0,0,0,0.3);
     padding: 2em;
     text-align: center;
+}
+
+main {
+    width: 100vw;
+    min-height: 90vh;
+    background: radial-gradient(circle, rgba(241,31,100,0.83) 0%, rgba(216,30,91,1) 100%);
+
+    .sidebar {
+        background: $white;
+        border-top-right-radius: 1em;
+        padding: 2em;
+
+        .option-btn {
+            border-radius: 10px;
+            background: $white;
+            color: $primary;
+            text-align: center;
+            padding: 0.5em;
+            margin: .75em .75em .75em 0;
+            box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25);
+            border: solid 2px $primary;
+        }
+        
+        .option-btn-selected {
+            border: solid 2px transparent;
+            background: $primary;
+            color: $white;
+        }
+
+        * {
+            color: $primary;
+        }
+    }
+
+    .prompt-section {
+        padding: 4em;
+    }
+
+    .context-section {
+        padding: 4em;
+    }
+
+    .checkbox {
+        border-radius: 10px;
+        background: $black;
+        width: 25px;
+        height: 25px;
+        transition: 0.75s;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    .checkbox-selected {
+        background: $primary;
+    }
 }
