@@ -59,6 +59,36 @@
                 console.log(response);
 
                 this.context.response = response;
+            },
+
+            howToPrompt() {
+                Swal.fire({
+                    title: '<strong style="color: black;">What is the prompt?</strong>',
+                    icon: 'info',
+                    html:
+                        'The prompt section contains two boxes. In the first one, you enter in the prompt you the AI to generate.<br>In the second one, the response will be generated',
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    focusConfirm: false,
+                    confirmButtonText:
+                        '<i class="fa fa-thumbs-up"></i> Great!',
+                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                })
+            },
+
+            howToContext() {
+                Swal.fire({
+                    title: '<strong style="color: black;">What is the prompt?</strong>',
+                    icon: 'info',
+                    html:
+                        'The context section contains a list of the previous prompts you entered during this session. Next to each prompt, you will find a red box. <br>This box being red means that the AI will remember that prompt and use it as context. <br>To prevent this, clicking on the red box will turn in black, meaning the AI will forget it.',
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    focusConfirm: false,
+                    confirmButtonText:
+                        '<i class="fa fa-thumbs-up"></i> Great!',
+                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                })
             }
         }).mount();
     </script>
@@ -115,7 +145,7 @@
                     <h3>Enter your prompt below</h3>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
-                    <div class="d-button link">
+                    <div @click="howToPrompt" class="d-button link">
                         <i class="fa fa-question-circle" aria-hidden="true"></i>
                     </div>
                 </div>
@@ -140,12 +170,12 @@
         </div>
         <!-- Context section -->
         <div class="col-4 context-section">
-            <div class="row">
+            <div class="row" v-scope>
                 <div class="col-8">
                     <h3>Context</h3>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
-                    <div class="d-button link">
+                    <div @click="howToContext" class="d-button link">
                         <i class="fa fa-question-circle" aria-hidden="true"></i>
                     </div>
                 </div>

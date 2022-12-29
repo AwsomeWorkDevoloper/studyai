@@ -47,6 +47,7 @@ app.use(express.static('public'));
 app.use('/', require('./routes/mainRoutes'));
 app.use('/openai', require('./routes/openaiRoutes'));
 app.use('/api', require('./routes/apiRoutes'));
+app.use('/checkout', require('./routes/checkoutRoutes'));
 
 
 module.exports = {mongooseClient};

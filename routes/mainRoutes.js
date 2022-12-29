@@ -2,14 +2,21 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const { hasPaid } = require('../controllers/mongoDbController');
 
 // Get router
 const router = express.Router();
 
 // Middle ware thing
-function checkSignIn(req, res, next){
+async function checkSignIn(req, res, next){
     if(req.session.uid){
-       next();     //If session exists, proceed to page
+        if ((await hasPaid(req.session.uid))) {
+            next();     //If session exists, proceed to page
+        } else {
+            var err = new Error("Not Paid!");
+            console.log(req.session.uid);
+            res.redirect('/cancel');
+        }
     } else {
        var err = new Error("Not logged in!");
        console.log(req.session.user);
@@ -50,6 +57,21 @@ router.get('/login', (req, res) => {
 
 router.get('/dashboard', checkSignIn, (req, res) => {
     renderPage(req, res, "dashboard.html", ["footer"]);
+})
+
+router.get('/cancel', (req, res) => {
+    renderPage(req, res, "cancel.html", ["footer", "navbar"]);
+})
+
+// Success
+router.get('/success/:id', async (req, res) => {
+    let id = req.params.id;
+
+    if (!id) {
+        return res.status(303).json({failed: true})
+    }
+
+    renderPage(req, res, "success.html", ["footer", "navbar"]);
 })
 
 // Export

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyAI - Your personal study buddy</title>
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="js/components/navbar.js"></script>
+    <script src="js/components/footer.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Main Petite vue-->
+    <script type="module">
+        import { createApp, reactive } from 'https://unpkg.com/petite-vue?module'
+
+        createApp({
+            Navbar,
+            Footer,
+
+            async goToCheckout() {
+                const data = (await axios.post('/checkout/create-checkout-session')).data;
+
+                location.href = `${data.url}`
+            }
+        }).mount();
+    </script>
+ 
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<!-- Templates -->
+
+<!-- Body -->
+<body v-scope>
+    <!-- Home Top -->
+    <div class="user-management-page-lsup">
+        <div v-scope="Navbar({ })"></div> 
+
+        <div class="row w-75 h-100 m-auto d-flex align-items-center justify-content-center">
+            <h3 class="mt-5">You do not have access to the website as you have not paid</h3>
+            <div @click="goToCheckout" class="d-button option-btn">
+                Proceed to payment
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div v-scope="Footer({ })"></div> 
+</body>
+</html>

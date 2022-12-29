@@ -46,22 +46,33 @@ const proceed = async (event) => {
     } 
 
     Swal.fire({
-        title: 'Welcome to StudyAI',
-        text: "All that's left for you is to confirm your payment.",
-        icon: 'success',
-        timer: 3000,
-        timerProgressBar: true,
+        title: "Welcome to StudyAI",
+        text: "Please wait...",
         didOpen: () => {
-          Swal.showLoading()
-
-          timerInterval = setInterval(() => {
-            
-          }, 100)
+            Swal.showLoading()
         },
-        willClose: () => {
-          clearInterval(timerInterval)
+        showConfirmButton: false
+    });
+
+    await (async () => {
+        // Send to api
+        const result = await (axios.post('/api/auth', userData));
+
+        const data = result.data;
+        console.log(result);
+
+        if (data.success == false) {
+            return Swal.fire(
+                {
+                    title: "Login failed.",
+                    text: "Please try again.",
+                    icon: 'error'
+                }
+            );
         }
-      }).then((result) => {
-        location.href = '/login';
-      })
+    })();
+
+    const data = (await axios.post('/checkout/create-checkout-session')).data;
+
+    location.href = `${data.url}`
 };

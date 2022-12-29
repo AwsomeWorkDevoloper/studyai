@@ -1,7 +1,7 @@
 // Imports
 const express = require('express');
 const path = require('path');
-const { createAccount, authenticate } = require('../controllers/mongoDbController');
+const { createAccount, authenticate, paid } = require('../controllers/mongoDbController');
 
 // Get router
 const router = express.Router();
@@ -42,6 +42,17 @@ router.get('/logout', async (req, res) => {
     req.session.destroy();
 
     res.redirect('/');
+});
+
+// Paid
+router.post('/paid', async (req, res) => {
+    const id = req.session.uid;
+
+    console.log(id);
+
+    await paid(id);
+
+    res.json({success: true});
 });
 
 // Export

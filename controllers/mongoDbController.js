@@ -61,5 +61,17 @@ async function authenticate(username, pwd) {
     return user;
 }
 
+// Paid
+async function paid(id) {
+    await User.findByIdAndUpdate(id, { $set: {paymentReceived: true} });
+}
+
+// Has paid
+async function hasPaid(id) {
+    const user = await User.findById(id);
+
+    return user.paymentReceived;
+}
+
 // Export
-module.exports = {createAccount, authenticate};
+module.exports = {createAccount, authenticate, paid, hasPaid};
