@@ -32,7 +32,7 @@ body, html {
 #examples {
   width: 100vw;
   margin-top: 4em;
-  max-height: 50vh;
+  min-height: 50vh;
   padding: 2em;
   background: radial-gradient(circle, rgba(241, 31, 100, 0.83) 0%, #d81e5b 100%);
 }
@@ -176,14 +176,25 @@ footer {
   background: radial-gradient(circle, rgba(241, 31, 100, 0.83) 0%, #d81e5b 100%);
   -webkit-box-shadow: 20px 20px 50px 0px rgba(0, 0, 0, 0.3);
           box-shadow: 20px 20px 50px 0px rgba(0, 0, 0, 0.3);
-  height: 35vh;
+  min-height: 35vh;
   padding: 2em;
 }
 
-.navbar {
+.d-navbar {
   width: 75%;
   margin: auto;
   color: #F9F5FF;
+}
+
+.d-navbar .d-dropdown-menu {
+  border: 2px solid #DE2562;
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  width: 100% !important;
+}
+
+.d-navbar .d-dropdown-menu * {
+  color: #DE2562;
 }
 
 .link {
@@ -355,5 +366,12 @@ main .checkbox:hover {
 
 main .checkbox-selected {
   background: #DE2562;
+}
+
+@media only screen and (max-width: 576px) {
+  .d-navbar {
+    width: 100% !important;
+    padding: 0 !important;
+  }
 }
 /*# sourceMappingURL=style.css.map */

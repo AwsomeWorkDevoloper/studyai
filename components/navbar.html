@@ -1,21 +1,21 @@
 <template id="navbar-template">
     <div class="w-100 row">
-        <div class="col-3">
+        <div class="col-3 col-sm-5">
             <a href="/" class="link">
                 <div class="row">
-                    <div class="col-2 text-left">
+                    <div class="col-2  text-left">
                         <img src="assets/study_ai_white.png" width="36" height="36" alt="Logo"/>
                     </div>
-                    <div class="col">
+                    <div class="col d-none d-lg-block">
                         <h3>StudyAI</h3>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col">
+        <div class="col d-none d-lg-block">
             <div class="row">
                 <div class="col"></div>
-                <div class="col-6">
+                <div class="col-8">
                     <div class="row">
                         <div class="col">
                             <a href='/dashboard' class="link">Dashboard</a>
@@ -30,6 +30,23 @@
                             <a href='/signup' class="link link-highlighted">Get Started</a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-end align-items-center d-lg-none">
+            <div class="dropdown show">
+                <a class="d-button link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </a>
+                
+                <div class="dropdown-menu dropdown-menu-right d-dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a href='/dashboard' class="link dropdown-item">Dashboard</a>
+                    <div class="dropdown-divider"></div>
+                    <a href='#examples' class="link dropdown-item">Examples</a>
+                    <div class="dropdown-divider"></div>
+                    <a href='#pricing' class="link dropdown-item">Pricing</a>
+                    <div class="dropdown-divider"></div>
+                    <a href='/signup' class="link link-highlighted dropdown-item">Get Started</a>
                 </div>
             </div>
         </div>
