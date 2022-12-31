@@ -12,14 +12,13 @@
     <script src="js/components/navbar.js"></script>
     <script src="js/components/footer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-
+    
     <!-- Main Petite vue-->
     <script type="module">
         import { createApp, reactive } from 'https://unpkg.com/petite-vue?module'
-
+        
         let examples = GetExamples();
-
+        
         const examplesOptions = reactive({
             optionSelected: 1,
             selectOption(n) {
@@ -35,14 +34,13 @@
                 return examples[this.optionSelected-1].topic;
             }
         })
-
+        
         createApp({
             Navbar,
             Footer,
             examplesOptions
         }).mount();
-    </script>
- 
+        </script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -51,6 +49,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Ripoff Bootstrap -->
+    <link rel="stylesheet" href="https://drive.google.com/uc?export=view&id=1yTLwNiCZhIdCWolQldwq4spHQkgZDqkG">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <!-- Templates -->
@@ -59,8 +60,8 @@
 <body>
     <!-- Home Top -->
     <div class="homepage-section-1">
-        <div class="d-navbar w-sm-100" v-scope="Navbar({ })"></div> 
-        <div class="row w-75 w-sm-100 h-50 m-auto d-flex align-items-center">
+        <div class="d-navbar" v-scope="Navbar({ })"></div> 
+        <div class="row w-75 h-50 m-auto d-flex align-items-center">
             <div class="col-7 pl-4" style="padding-bottom: 10em;">
                 <div class="row">
                     <h1>Study smarter now. </h1>
@@ -151,7 +152,7 @@
                             </h4>
                         </div>
                         <div class="row-8">
-                            <img src="assets/Writer8217s-block.svg" class="mt-4" width="256px"/>
+                            <img src="assets/Write.svg" class="mt-4" width="256px"/>
                         </div>
                     </div>
                 </div>
@@ -169,7 +170,7 @@
                             </h4>
                         </div>
                         <div class="row-8">
-                            <img src="assets/Classes.svg" class="mt-4" width="256px"/>
+                            <img src="assets/Translate-Application.svg" class="mt-4" width="256px"/>
                         </div>
                     </div>
                 </div>
@@ -187,7 +188,7 @@
                             </h4>
                         </div>
                         <div class="row-8">
-                            <img src="assets/Pomodoro-technique.svg" class="mt-4" width="256px"/>
+                            <img src="assets/Boy-choosing-NFT-Avatar.svg" class="mt-4" width="256px"/>
                         </div>
                     </div>
                 </div>
@@ -196,7 +197,7 @@
     </div>
     <!-- Examples -->
     <div id="examples" v-scope>
-        <div class="row w-75 w-sm-100 mh-100 m-auto">
+        <div class="row w-75 mh-100 m-auto">
             <div class="col">
                 <div class="row mt-3">
                     <h3>How it works</h3>

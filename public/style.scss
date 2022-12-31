@@ -344,9 +344,19 @@ main {
 }
 
 // Smaller
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 680px) {
     .d-navbar {
         width: 100%!important;
         padding: 0!important;
+    }
+
+    .w-75 {
+        width: 100%!important;
+    }
+
+    .homepage-section-cards {
+        overflow-y: scroll;
+        white-space: nowrap;
+
     }
 }

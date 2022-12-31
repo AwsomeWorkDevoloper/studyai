@@ -20,8 +20,8 @@ router.post('/create-checkout-session', async (req, res) => {
             },
         ],
         mode: 'subscription',
-        success_url: `http://localhost:5000/success/{CHECKOUT_SESSION_ID}`,
-        cancel_url: `http://localhost:5000/cancel`,
+        success_url: `${process.env.DOMAIN_URL}/success/{CHECKOUT_SESSION_ID}`,
+        cancel_url: `${process.env.DOMAIN_URL}/cancel`,
     });
     
     console.log(session)
