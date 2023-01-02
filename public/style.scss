@@ -99,7 +99,7 @@ body, html {
         border-radius: 10px;
         background: $white;
         padding: 2em;
-        width: 50%;
+        width: 40%;
         margin: 2em;
 
         * { color: $primary;  .input-prompt { color: $black; } }
@@ -312,7 +312,7 @@ main {
             background: $primary;
             color: $white;
         }
-
+        
         * {
             color: $primary;
         }
@@ -341,10 +341,31 @@ main {
     .checkbox-selected {
         background: $primary;
     }
+
+}
+
+.mobile-tab-bar {
+    visibility: hidden;
+}
+
+.d-dropdown-menu {
+    transition: all 0.5s;
+    overflow: hidden;
+    transform-origin: top center;
+    transform: scale(1,0);
+}
+
+.d-examples-response {
+    width: 50%;
+    max-width: 50%;
+}
+
+.context-item {
+    cursor: pointer;
 }
 
 // Smaller
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 768px) {
     .d-navbar {
         width: 100%!important;
         padding: 0!important;
@@ -357,6 +378,123 @@ main {
     .homepage-section-cards {
         overflow-y: scroll;
         white-space: nowrap;
+        min-height: 50%;
+        max-height: 70%;
 
+        .showcard {
+            box-shadow: none;
+        }
+    }
+
+    .h-sm-100 {
+        height: 100%!important;
+    }
+
+    .d-examples {
+        display: grid;
+        grid-template-rows: auto;
+
+        div {
+            width: 100%!important;
+            max-width: 100%!important;
+        }
+
+        .pr-5 {
+            padding-right: 0!important;
+        }
+
+        .d-examples-response {
+            display: flex!important;
+            justify-content: left!important;
+            margin-top: 1.5em;
+        }
+
+        .option-chooser {
+            display: flex!important;
+            justify-content: space-around!important;
+            gap: 3em;
+
+            .row {
+                display: block;
+                width: 50%!important;
+            }
+        }
+    }
+
+    footer {
+        min-height: 28vh;
+        padding: 2em;
+    }
+
+    .logo-row {
+        display: inline-block;
+        gap: 1.5em;
+        flex-wrap: nowrap;
+    }
+
+    .user-management-page-lsup {
+        form {
+            width: 100%;
+            margin: 0;
+            margin-top: 2em;
+            padding: 1.2em;
+        }
+
+        .form-container {
+            width: 100%!important;
+            margin: 0 !important;
+            display: block !important;
+        }
+    }
+
+    main {
+        margin-left: 0 !important;
+    }
+
+    .mobile-tab-bar {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        
+        background: $primary;
+
+        visibility: visible;
+        
+        .option-btn {
+            border-radius: 10px;
+            background: $white;
+            color: $primary;
+            text-align: center;
+            padding: 0.5em;
+            margin: .75em .75em .75em 0;
+            box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25);
+            border: solid 2px $primary;
+        }
+        
+        .option-btn-selected {
+            border: solid 2px $white;
+            background: $primary;
+            color: $white;
+        }
+    }
+
+    .sidebar {
+        width: 100%!important;
+        max-width: 100%!important;
+        flex: 100%!important;
+        border-top-right-radius: 0!important;
+    }
+
+    .prompt-section {
+        width: 100%!important;
+        max-width: 100%!important;
+        flex: 100%!important;
+        padding: 1em !important;
+    }
+
+    .context-section {
+        width: 100%!important;
+        max-width: 100%!important;
+        flex: 100%!important;
+        padding: 1em !important;
     }
 }

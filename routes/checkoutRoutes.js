@@ -7,7 +7,7 @@ const stripe = require('stripe')(process.env.STRIPE_KEY);
 const router = express.Router();
 
 // Price id
-const priceId = 'price_1MKSH3I2UVMY3RMxOD2Clhve';
+const priceId = process.env.PRICE_ID;
 
 // Create checkout sesh
 router.post('/create-checkout-session', async (req, res) => {
