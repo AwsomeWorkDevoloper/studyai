@@ -47,18 +47,35 @@ router.get('/', (req, res) => {
     renderPage(req, res, "index.html", ["navbar", "footer"]);
 });
 
+// signup and others
 router.get('/signup', (req, res) => {
     renderPage(req, res, "signup.html", ["navbar", "footer"]);
 });
 
+router.get('/signup/:affiliateId', (req, res) => {
+    let id = req.params.affiliateId;
+
+    req.session.signupAffiliate = id;
+
+    renderPage(req, res, "affiliate/signupthrough.html", ["navbar", "footer"]);
+});
+
+router.get('/affiliate-signup', (req, res) => {
+    renderPage(req, res, "affiliate/signup.html", ["navbar", "footer"]);
+})
+
+
+// Login
 router.get('/login', (req, res) => {
     renderPage(req, res, "login.html", ["navbar", "footer"]);
 });
 
+// Dashboard
 router.get('/dashboard', checkSignIn, (req, res) => {
     renderPage(req, res, "dashboard.html", ["footer"]);
 })
 
+// Cancel
 router.get('/cancel', (req, res) => {
     renderPage(req, res, "cancel.html", ["footer", "navbar"]);
 })

@@ -24,7 +24,7 @@ router.post('/create-checkout-session', async (req, res) => {
         cancel_url: `${process.env.DOMAIN_URL}/cancel`,
     });
     
-    console.log(session)
+    //console.log(session)
 
     res.json({url: session.url})
 });

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyAI - Your personal study buddy</title>
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="../js/signup.js"></script>
+    <script src="../js/components/navbar.js"></script>
+    <script src="../js/components/footer.js"></script>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Main Petite vue-->
+    <script type="module">
+        import { createApp, reactive } from 'https://unpkg.com/petite-vue?module'
+
+        createApp({
+            Navbar,
+            Footer,
+        }).mount();
+
+        console.log(proceed);
+    </script>
+ 
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<!-- Templates -->
+
+<!-- Body -->
+<body>
+    <!-- Home Top -->
+    <div class="user-management-page-lsup">
+        <div class="d-navbar mb-3" v-scope="Navbar({ affiliate: true })"></div> 
+        <div class="form-container w-75 h-100 m-auto d-flex align-items-center justify-content-center">
+            <form>
+                <h3 class="p-4">Create your account</h3>
+
+                <div class="input-prompt">
+                    <p >Username</p>
+                    <input type="text" placeholder="Example: JohnDoe..." name="username"/>
+                </div>
+                <div class="input-prompt">
+                    <p >Email</p>
+                    <input type="email" placeholder="Example: johndoe@example.com..." name="email"/>
+                </div>
+                <div class="input-prompt">
+                    <p >Password</p>
+                    <input type="password" placeholder="Example: *******" name="pwd"/>
+                </div>
+                <div onclick="proceed(event)" class="d-button secondary-btn" style="margin: 0.5em; margin-top:.75em; margin-bottom: .75em;">Proceed to checkout</div>
+
+                <a href="/login" class="link-secondary">Already have an account? Login here!</a>
+            </form>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div v-scope="Footer({ affiliate: true })"></div> 
+</body>
+</html>

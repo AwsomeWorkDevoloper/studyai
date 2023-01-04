@@ -1,7 +1,7 @@
 // Imports
 const express = require('express');
 const path = require('path');
-const { createAccount, authenticate, paid } = require('../controllers/mongoDbController');
+const { createAccount, authenticate, paid, giveAffiliate, getAffiliateBalance } = require('../controllers/mongoDbController');
 
 // Get router
 const router = express.Router();
@@ -13,7 +13,7 @@ router.post('/create-account', async (req, res) => {
     const result = await createAccount(userData);
 
     if (result['err']) {
-        return res.send({success: false, error: result['error']});
+        return res.send({success: false, error: result['msg']});
     }
 
     res.send({ success: true, uid: result._id });
@@ -29,8 +29,19 @@ router.post('/auth', async (req, res) => {
         return res.json({ success: false });
     }
 
+    if (req.session.signupAffiliate) {
+        const affiliateResult = await giveAffiliate(req.session.signupAffiliate);
+
+        console.log(affiliateResult);
+    }
+
     req.session.username = authResult.username;
     req.session.uid = authResult._id;
+    req.session.affiliate = {
+        isAffiliate: authResult.isAffiliate,
+        affiliateId: authResult.affiliateId || '',
+        balance: authResult.affiliateMonthlyBalance || 0
+    };
 
     res.json({ success: true, username: authResult.username });
 });
@@ -53,6 +64,15 @@ router.post('/paid', async (req, res) => {
     await paid(id);
 
     res.json({success: true});
+});
+
+// Check Affiliate
+router.post('/check-affiliate', async (req, res) => {
+    const affiliateBalance = await getAffiliateBalance(req.session.affiliate.affiliateId);
+
+    req.session.affiliate.balance = affiliateBalance;
+
+    res.json(req.session.affiliate);
 });
 
 // Export

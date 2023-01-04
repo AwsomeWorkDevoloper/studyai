@@ -3,8 +3,8 @@
         <div class="col-3 col-sm-5">
             <a href="/" class="link">
                 <div class="row">
-                    <div class="col-2  text-left">
-                        <img src="assets/study_ai_white.png" width="36" height="36" alt="Logo"/>
+                    <div class="col-2  text-left" v-scope>
+                        <img id="navbar-logo" v-effect="if (affiliate) $el.src = '../assets/study_ai_white.png'" src="assets/study_ai_white.png"  width="36" height="36" alt="Logo"/>
                     </div>
                     <div class="col d-none d-lg-block">
                         <h3>StudyAI</h3>

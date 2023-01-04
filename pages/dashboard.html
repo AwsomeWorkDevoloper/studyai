@@ -29,6 +29,8 @@
                 const inputPrompt = document.querySelector('#prompt-input');
 
                 inputPrompt.value = "";
+
+                tabs.selectOption(2);
             },
             getPromptType() {
                 return this.examples[this.optionSelected - 1].topic
@@ -47,8 +49,6 @@
                 const tabSelector = document.querySelector('.mobile-tab-bar');
 
                 const x = window.getComputedStyle(tabSelector).visibility === "hidden";
-                
-                console.log(x);
 
                 if (x) return false;
 
@@ -65,10 +65,65 @@
             showOldResponse (index) {
                 this.response = this.contextList[index].response;
 
-                console.log(this.response);
+                tabs.selectOption(2);
             },
             currentPromptText: '',
             response: 'Waiting for input...'
+        })
+
+        const affiliate = reactive({
+            affiliateInfo: {},
+
+            async checkAffiliate() {
+                Swal.fire({
+                    title: "Loading...",
+                    text: "Please wait while we set your dashboard up",
+                    didOpen: () => {
+                        Swal.showLoading()
+                    },
+                    showConfirmButton: false
+                });
+
+                const result = await axios.post('/api/check-affiliate');
+
+                let data = await result.data;
+
+                console.log(data);
+
+                Swal.close();
+
+                this.affiliateInfo = data;
+            },
+
+            async showAffiliateInfo () {
+                await (this.checkAffiliate());
+
+                Swal.fire({
+                    title: '<strong style="color: black;">Affiliate Info</strong>',
+                    icon: 'info',
+                    html:
+                        `<style>
+                        * {
+                            color: black;
+                            text-align: left;
+                        }    
+                        </style>
+                        
+                        <h6>As an affiliate, you will recieve $2 from the $10 a user that signs up through your link pays monthly.</h2>
+                        <h6>You will be contacted via email at the end of each month to collect your money.<br/><br/></h4>
+                        <h5>Your info:</h5>
+                        <h6>Your referral link: <a id="referral-link" href="/signup/${this.affiliateInfo.affiliateId}">studyai.ca/signup/${this.affiliateInfo.affiliateId}</a></h6>
+                        <h6>Money Earned (monthly): $${this.affiliateInfo.balance}</h6>
+                        <h6>Users Brought in: ${this.affiliateInfo.balance / 2}</h6>
+                        `,
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    focusConfirm: false,
+                    confirmButtonText:
+                        '<i class="fa fa-thumbs-up"></i> Great!',
+                    confirmButtonAriaLabel: 'Thumbs up, great!',
+                })
+            }
         })
 
         createApp({
@@ -76,6 +131,7 @@
             context,
             Footer,
             tabs,
+            affiliate,
 
             async go (event) {
                 event.preventDefault();
@@ -137,7 +193,7 @@
 <!-- Body -->
 <body>
     <!-- Mobile Tab bar -->
-    <div v-scope class="w-100 p-2 mobile-tab-bar d-lg-none">
+    <div v-scope class="w-100 p-2 mobile-tab-bar sticky-top d-lg-none">
         <div :class="['d-button', 'option-btn', {'option-btn-selected': tabs.optionSelected == 1}]" @click="tabs.selectOption(1)">Options</div>
         <div :class="['d-button', 'option-btn', {'option-btn-selected': tabs.optionSelected == 2}]" @click="tabs.selectOption(2)">Prompt</div>
         <div :class="['d-button', 'option-btn', {'option-btn-selected': tabs.optionSelected == 3}]" @click="tabs.selectOption(3)">Context</div>
@@ -170,9 +226,14 @@
                 </div>
             </div>
             
-            <div class="row-4 w-75 h-50 m-auto d-flex align-items-center">
-                <div class="w-100 d-button option-btn" onclick="logout(event)">
-                    Logout
+            <div class="row-3 w-75 h-50 m-auto d-flex align-items-center" v-scope @vue:mounted="affiliate.checkAffiliate">
+                <div class="col">
+                    <div class="row w-100 d-button option-btn" onclick="logout(event)">
+                        Logout
+                    </div>
+                    <div :class="['row', 'w-100', 'd-button', 'option-btn', {'d-none': !(affiliate.affiliateInfo.isAffiliate) }]" @click="affiliate.showAffiliateInfo">
+                        Show Affiliate Info
+                    </div>
                 </div>
             </div>
         </div>
@@ -219,6 +280,7 @@
                 </div>
             </div>
             <div class="row pt-4" v-scope>
+                <p :class="['pl-3', {'d-none': context.contextList.length != 0}]">You have not entered anything in yet.</p>
                 <div class="context-item m-auto" style="min-width: 100%;" v-for="(contextItem, i) in context.contextList">
                     <div @click="context.showOldResponse(i)" class="input-prompt d-flex justify-content-center">
                         <div style="width:85%">

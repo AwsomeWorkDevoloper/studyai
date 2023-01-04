@@ -31,7 +31,7 @@ body, html {
 
 #examples {
   width: 100vw;
-  margin-top: 4em;
+  margin-top: 2em;
   min-height: 50vh;
   padding: 2em;
   background: radial-gradient(circle, rgba(241, 31, 100, 0.83) 0%, #d81e5b 100%);
@@ -369,6 +369,7 @@ main .checkbox-selected {
 }
 
 .mobile-tab-bar {
+  display: none;
   visibility: hidden;
 }
 
@@ -391,6 +392,17 @@ main .checkbox-selected {
   cursor: pointer;
 }
 
+.h-sm-auto-100 {
+  height: 75% !important;
+}
+
+.cards-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+}
+
 @media only screen and (max-width: 768px) {
   .d-navbar {
     width: 100% !important;
@@ -399,9 +411,15 @@ main .checkbox-selected {
   .w-75 {
     width: 100% !important;
   }
+  .homepage-section-1 .col-7 {
+    margin-top: 3em;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+  }
   .homepage-section-cards {
-    overflow-y: scroll;
-    white-space: nowrap;
+    overflow: auto;
     min-height: 50%;
     max-height: 70%;
   }
@@ -409,8 +427,18 @@ main .checkbox-selected {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
+  .homepage-section-cards .cards-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    grid-auto-flow: column;
+  }
   .h-sm-100 {
     height: 100% !important;
+  }
+  .h-sm-auto-100 {
+    height: auto !important;
   }
   .d-examples {
     display: -ms-grid;

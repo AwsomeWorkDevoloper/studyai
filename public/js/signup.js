@@ -1,4 +1,4 @@
-const proceed = async (event) => {
+const proceed = async (event, affilate=false) => {
     // Prevent Default
     event.preventDefault();
 
@@ -30,20 +30,18 @@ const proceed = async (event) => {
         }
     }
 
-    console.log(userData);
-
     // Send to api
-    const result = await axios.post('/api/create-account', userData);
+    const result = await (await axios.post('/api/create-account', {...userData, affilate })).data;
 
-    if (result.err) {
+    if (!result.success) {
         return Swal.fire(
             {
                 title: "Error creating account.",
-                text: "Server could not make account.",
+                text: result.error,
                 icon: 'error'
             }
         );
-    } 
+    }
 
     Swal.fire({
         title: "Welcome to StudyAI",

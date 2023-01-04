@@ -7,8 +7,8 @@
                     <div class="col-6">
                         <a href="/" class="link">
                             <div class="row logo-row">
-                                <div class="col-4 text-left">
-                                    <img src="assets/study_ai_white.png" width="36" height="36" alt="Logo"/>
+                                <div class="col-4 text-left" v-scope>
+                                    <img v-effect="if (affiliate) $el.src = '../assets/study_ai_white.png'" src="assets/study_ai_white.png" width="36" height="36" alt="Logo"/>
                                 </div>
                                 <div class="col">
                                     <h3>StudyAI</h3>
@@ -17,7 +17,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="row-4 h-100 d-flex align-items-center mt-3">
+                <div class="row-4 h-sm-auto-100 d-flex align-items-end mt-3">
                     <div>
                         <div class="pl-3 mt-3 d-none d-lg-block">
                             <h5>Get in touch</h5>
@@ -64,6 +64,7 @@
                         <div class="row"><a href="/#pricing" class="link font-weight-light p-2 ml-2">Pricing</a></div>
                         <div class="row"><a href="/signup" class="link font-weight-light p-2 ml-2">Signup</a></div>
                         <div class="row"><a href="/login" class="link font-weight-light p-2 ml-2">Login</a></div>
+                        <div class="row"><a href="/affiliate-signup" class="link font-weight-light p-2 ml-2">Register as affiliate</a></div>
                     </div>
                     <div class="col">
                         <div class="row"><a href="#" class="link font-weight-light p-2 ml-2">Terms and Conditons</a></div>
