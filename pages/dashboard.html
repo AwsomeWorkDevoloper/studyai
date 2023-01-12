@@ -199,7 +199,7 @@
         <div :class="['d-button', 'option-btn', {'option-btn-selected': tabs.optionSelected == 3}]" @click="tabs.selectOption(3)">Context</div>
     </div>
     <!-- Main body -->
-    <main class="row" v-scope>
+    <main class="row ml-0" v-scope>
         <!-- Sidebar -->
         <div :class="['col-2', 'sidebar', {'d-none': tabs.checkSelected(1)}]" v-scope>
             <div class="row">
@@ -214,10 +214,10 @@
             </div>
 
             <div class="row-4 pt-5">
-                <div class="col w-75 m-auto text-center">
+                <div class="col w-75 m-auto text-center p-0">
                     <div 
                         v-for="(option, i) in options.examples"
-                        :class="['row', 'd-button', 'option-btn', 'mt-3', 'mb-3', {'option-btn-selected': (options.optionSelected == i + 1)}]" 
+                        :class="['row', 'd-button', 'option-btn', 'mt-3', 'mb-3', 'mr-0', {'option-btn-selected': (options.optionSelected == i + 1)}]" 
                         @click="options.selectOption(i + 1)" 
                     >
                         {{ option.topic }}
@@ -227,7 +227,7 @@
             </div>
             
             <div class="row-3 w-75 h-50 m-auto d-flex align-items-center" v-scope @vue:mounted="affiliate.checkAffiliate">
-                <div class="col">
+                <div class="col p-0">
                     <div class="row w-100 d-button option-btn" onclick="logout(event)">
                         Logout
                     </div>
