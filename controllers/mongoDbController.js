@@ -5,13 +5,13 @@ const { v4 } = require('uuid');
 
 // Create user schema
 const UserSchema = new mongoose.Schema({
-    username: { type: String, unique: true },
-    email: { type: String, unique: true },
+    username: { type: String, unique: true , required: true},
+    email: { type: String, unique: true , required: true},
     pwd: String,
-    paymentReceived: {type: Boolean, default: false},
-    isAffiliate: {type: Boolean, default: false},
-    affiliateId: {type: String, default: ''},
-    affiliateMonthlyBalance: {type: Number, default: 0.0}
+    paymentReceived: {type: Boolean, default: false, required: true},
+    isAffiliate: {type: Boolean, default: false, required: true},
+    affiliateId: {type: String, default: '', required: true},
+    affiliateMonthlyBalance: {type: Number, default: 0.0, required: true}
 });
 
 const User = mongoose.model('User', UserSchema);
