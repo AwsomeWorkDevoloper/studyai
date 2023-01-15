@@ -8,10 +8,18 @@ const UserSchema = new mongoose.Schema({
     username: { type: String, unique: true , required: true},
     email: { type: String, unique: true , required: true},
     pwd: String,
-    paymentReceived: {type: Boolean, default: false, required: true},
-    isAffiliate: {type: Boolean, default: false, required: true},
-    affiliateId: {type: String, default: '', required: true},
-    affiliateMonthlyBalance: {type: Number, default: 0.0, required: true}
+    paymentReceived: {type: Boolean, default: false},
+    isAffiliate: {type: Boolean, default: false},
+    affiliateId: {type: String, default: ''},
+    affiliateMonthlyBalance: {type: Number, default: 0.0},
+    freeTrailEndDate: {
+        type: Date,
+        default: function() {
+            var date = new Date((Date.now()).valueOf());
+            date.setDate(date.getDate() + 3);
+            return date;
+        }
+    }
 });
 
 const User = mongoose.model('User', UserSchema);
@@ -85,7 +93,13 @@ async function paid(id) {
 async function hasPaid(id) {
     const user = await User.findById(id);
 
-    return user.paymentReceived;
+    const isExpired = date => date <= Date.now();
+
+    if (isExpired(user.freeTrailEndDate)) {
+        return user.paymentReceived;
+    }
+
+    return true;
 }
 
 // Give affiliate rewards
@@ -106,5 +120,12 @@ async function getAffiliateBalance(affiliateId) {
     return x.affiliateMonthlyBalance;
 }
 
+// Get free trial data
+async function getFreeTrialData(uid) {
+    let x = await User.findOne({_id: uid});
+
+    return {paid: x.paymentReceived, exDate: x.freeTrailEndDate};
+}
+
 // Export
-module.exports = {createAccount, authenticate, paid, hasPaid, giveAffiliate, getAffiliateBalance};
+module.exports = {createAccount, authenticate, paid, hasPaid, giveAffiliate, getAffiliateBalance, getFreeTrialData};

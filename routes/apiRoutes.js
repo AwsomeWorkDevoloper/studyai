@@ -1,7 +1,7 @@
 // Imports
 const express = require('express');
 const path = require('path');
-const { createAccount, authenticate, paid, giveAffiliate, getAffiliateBalance } = require('../controllers/mongoDbController');
+const { createAccount, authenticate, paid, giveAffiliate, getAffiliateBalance, getFreeTrialData } = require('../controllers/mongoDbController');
 
 // Get router
 const router = express.Router();
@@ -74,6 +74,13 @@ router.post('/check-affiliate', async (req, res) => {
 
     res.json(req.session.affiliate);
 });
+
+// Check Free trial
+router.post('/check-free-trial', async (req, res) => {
+    const data = await getFreeTrialData(req.session.uid);
+
+    res.json(data);
+})
 
 // Export
 module.exports = router;

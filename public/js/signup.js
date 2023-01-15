@@ -68,9 +68,11 @@ const proceed = async (event, affilate=false) => {
                 }
             );
         }
+
+        location.href = '/dashboard'
     })();
 
-    const data = (await axios.post('/checkout/create-checkout-session')).data;
+    /*const data = (await axios.post('/checkout/create-checkout-session')).data;
 
-    location.href = `${data.url}`
+    location.href = `${data.url}`*/
 };

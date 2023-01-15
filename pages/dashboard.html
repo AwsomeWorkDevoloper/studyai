@@ -93,8 +93,6 @@
 
                 let data = await result.data;
 
-                console.log(data);
-
                 Swal.close();
 
                 this.affiliateInfo = data;
@@ -131,12 +129,52 @@
             }
         })
 
+        const subscription = reactive({
+            async checkFreeTrial () {
+                const freeTrialData = await (await axios.post('/api/check-free-trial')).data;
+
+                const isExpired = date => new Date(date) <= Date.now();
+
+                if (freeTrialData.paid) {
+                    return;
+                }
+
+                const exDate = new Date(freeTrialData.exDate);
+
+                if (!isExpired(exDate)) {
+                    Swal.fire({
+                        title: '<strong style="color: black;">Welcome!</strong>',
+                        icon: 'info',
+                        html:
+                            `<style>
+                            * {
+                                text-align: left;
+                            }    
+                            </style>
+
+                            <h5 style="color: black;">We wish you a wonderful experience with studyai!</h5>
+
+                            <h5 style="color: black;">Note: Just a reminder that your free trial ends on</h5>
+                            <h6 style="color: black;">${exDate.toDateString()}</h6>
+                            `,
+                        showCloseButton: true,
+                        showCancelButton: true,
+                        focusConfirm: false,
+                        confirmButtonText:
+                            '<i class="fa fa-thumbs-up"></i> Great!',
+                        confirmButtonAriaLabel: 'Got it!',
+                    })
+                }
+            }
+        })
+
         createApp({
             options,
             context,
             Footer,
             tabs,
             affiliate,
+            subscription,
 
             async go (event) {
                 event.preventDefault();
@@ -144,8 +182,6 @@
                 this.context.addPrompt(this.options);
 
                 let response = await submitPrompt(this.context);
-
-                console.log(response);
 
                 this.context.response = response;
                 this.context.contextList.find(x => x.prompt == this.context.currentPromptText).response = response;
@@ -204,7 +240,7 @@
         <div :class="['d-button', 'option-btn', {'option-btn-selected': tabs.optionSelected == 3}]" @click="tabs.selectOption(3)">Context</div>
     </div>
     <!-- Main body -->
-    <main class="row ml-0" v-scope>
+    <main class="row ml-0" v-scope @vue:mounted="subscription.checkFreeTrial">
         <!-- Sidebar -->
         <div :class="['col-2', 'sidebar', {'d-none': tabs.checkSelected(1)}]" v-scope>
             <div class="row">
