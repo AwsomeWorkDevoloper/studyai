@@ -22,11 +22,15 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- Adsense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7875747276441657" crossorigin="anonymous"></script>
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7359688171445041" crossorigin="anonymous"></script>
+    
     <!-- Main Petite vue-->
     <script type="module">
         import { createApp, reactive } from 'https://unpkg.com/petite-vue?module'
+
+        const alertAd = () => {
+            return '\<ins data-adtest="on" class="adsbygoogle"style="display:block" data-ad-client=" ca-pub-7359688171445041" data-ad-slot="7396047780" data-ad-format="auto" data-full-width-responsive="true"\>\<\/ins> \<script\> (adsbygoogle = window.adsbygoogle || []).push({})\<\/script\>';
+        };
 
         const options = reactive({
             examples: GetExamples(),
@@ -121,6 +125,7 @@
                         <h6>Your referral link: <a id="referral-link" href="/signup/${this.affiliateInfo.affiliateId}">studyai.ca/signup/${this.affiliateInfo.affiliateId}</a></h6>
                         <h6>Money Earned (monthly): $${this.affiliateInfo.balance}</h6>
                         <h6>Users Brought in: ${this.affiliateInfo.balance / 2}</h6>
+                        ${alertAd()}
                         `,
                     showCloseButton: true,
                     showCancelButton: true,
@@ -159,6 +164,7 @@
 
                             <h5 style="color: black;">Note: Just a reminder that your free trial ends on</h5>
                             <h6 style="color: black;">${exDate.toDateString()}</h6>
+                            ${alertAd()}
                             `,
                         showCloseButton: true,
                         showCancelButton: true,
@@ -170,6 +176,7 @@
                 }
             }
         })
+
 
         createApp({
             options,
@@ -195,7 +202,7 @@
                     title: '<strong style="color: black;">What is the prompt?</strong>',
                     icon: 'info',
                     html:
-                        'The prompt section contains two boxes. In the first one, you enter in the prompt you the AI to generate.<br>In the second one, the response will be generated',
+                        'The prompt section contains two boxes. In the first one, you enter in the prompt you the AI to generate.<br>In the second one, the response will be generated'+alertAd(),
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
@@ -210,7 +217,7 @@
                     title: '<strong style="color: black;">What is the prompt?</strong>',
                     icon: 'info',
                     html:
-                        'The context section contains a list of the previous prompts you entered during this session. Next to each prompt, you will find a red box. <br>This box being red means that the AI will remember that prompt and use it as context. <br>To prevent this, clicking on the red box will turn in black, meaning the AI will forget it.',
+                        'The context section contains a list of the previous prompts you entered during this session. Next to each prompt, you will find a red box. <br>This box being red means that the AI will remember that prompt and use it as context. <br>To prevent this, clicking on the red box will turn in black, meaning the AI will forget it.'+alertAd(),
                     showCloseButton: true,
                     showCancelButton: true,
                     focusConfirm: false,
